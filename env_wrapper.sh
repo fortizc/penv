@@ -72,7 +72,14 @@ list_packages() {
 
 
 activate_environment() {
-    echo "Not implemented"
+    local activate_cmd=$(get_folder)/$1/bin/activate
+
+    if [ ! -f $activate_cmd ]; then
+        echo "ERROR, the environment doesn't exist"
+        exit 1
+    else
+         source $activate_cmd
+    fi
 }
 
 
