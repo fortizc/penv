@@ -1,4 +1,4 @@
-source "functions.sh"
+source "env_wrapper.sh"
 
 help() {
     echo "Usage $1 {options}:"
