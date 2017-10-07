@@ -10,7 +10,6 @@ help() {
     echo "-c, --create {python_version} {name}\tCreate a new environment"
     echo "-i, --interpreter\t\t\tShow all availables interpreters"
     echo "-d, --delete {environment}\t\tDelete the given environment"
-    echo "-r, --run {environment} {script}\tRun script using an environment"
     echo "-h, --help\t\t\t\tShow this help and exit"
 
 }
@@ -33,9 +32,6 @@ case "$1" in
         ;;
     --delete | -d)
         delete_environment $2
-        ;;
-    --run | -r)
-        run_as $2 $3
         ;;
     --help | -h)
         help $0
