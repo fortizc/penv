@@ -9,9 +9,8 @@ help() {
     echo "-a, --activate {environment}\t\tActivate the given environment"
     echo "-c, --create {python_version} {name}\tCreate a new environment"
     echo "-i, --interpreter\t\t\tShow all availables interpreters"
-    echo "-s, --set_folder {path_to_folder}\tSet the environments folder"
     echo "-d, --delete {environment}\t\tDelete the given environment"
-    echo "-r, --run {environment} {script}\tRun the script using an specific environment"
+    echo "-r, --run {environment} {script}\tRun script using an environment"
     echo "-h, --help\t\t\t\tShow this help and exit"
 
 }
@@ -31,9 +30,6 @@ case "$1" in
         ;;
     --interpreter | -i)
         list_interpreters
-        ;;
-    --set_folder | -s)
-        set_folder $2
         ;;
     --delete | -d)
         delete_environment $2
