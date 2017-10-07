@@ -89,5 +89,3 @@ delete_environment() {
 run_as() {
     echo "Not implemented"
 }
-
-list_packages $1
