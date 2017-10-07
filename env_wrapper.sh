@@ -106,8 +106,3 @@ delete_environment() {
     fi
     rm -rf $delete
 }
-
-
-run_as() {
-    echo "Not implemented"
-}
