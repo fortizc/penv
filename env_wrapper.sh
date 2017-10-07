@@ -37,7 +37,18 @@ list_interpreters() {
         exit 1
     fi
 
-    basename $(ls -1 $python_path/python* | grep -v "config" | grep -v pythonw)
+    local interpreters=$(ls -1 $python_path/python* |\
+                        grep -v "config" |\
+                        grep -v pythonw |\
+                        cut -d "@" -f1)
+    local result=""
+
+    for intr in $interpreters; do
+        local version=$(eval $intr --version 2>&1 | awk '{print $2}')
+        intr=$(basename $intr)
+        result="$result$intr $version\n"
+    done
+    echo -e $result | column -t
 }
 
 
