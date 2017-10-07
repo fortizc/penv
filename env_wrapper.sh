@@ -96,7 +96,15 @@ create_environment() {
 
 
 delete_environment() {
-    echo "Not implemented"
+    local folder=$(get_folder)
+    local env_name=$1
+    local delete=$folder/$env_name
+
+    if [ ! -d $delete ]; then
+        echo "ERROR, the environment doesn't exists"
+        exit 1
+    fi
+    rm -rf $delete
 }
 
 
