@@ -77,7 +77,21 @@ activate_environment() {
 
 
 create_environment() {
-    echo "Not implemented"
+    local interpreter=$1
+    local env_name=$2
+    local folder=$(get_folder)
+
+    local version=$(eval $interpreter --version 2>&1 |\
+                    awk '{print $2}' | \
+                    cut -d "." -f1)
+
+    cd $folder
+    if [ $version -lt 3 ]; then
+        virtualenv -p $(which $interpreter) $env_name
+    else
+        $interpreter -m venv $env_name
+    fi
+    cd - > /dev/null 2>&1
 }
 
 
