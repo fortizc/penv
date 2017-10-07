@@ -3,16 +3,16 @@
 source "env_wrapper.sh"
 
 help() {
-    echo "Usage $1 {options}:"
-    echo ""
-    echo "Arguments:"
-    echo "-l, --list\t\t\t\tList all availables environments"
-    echo "-p, --packages {environment}\t\tShow instaled packages"
-    echo "-a, --activate {environment}\t\tActivate the given environment"
-    echo "-c, --create {python_version} {name}\tCreate a new environment"
-    echo "-i, --interpreter\t\t\tShow all availables interpreters"
-    echo "-d, --delete {environment}\t\tDelete the given environment"
-    echo "-h, --help\t\t\t\tShow this help and exit"
+    echo -e "Usage $1 {options}:"
+    echo -e ""
+    echo -e "Arguments:"
+    echo -e "-l, --list\t\t\t\tList all availables environments"
+    echo -e "-p, --packages {environment}\t\tShow instaled packages"
+    echo -e "-a, --activate {environment}\t\tActivate the given environment"
+    echo -e "-c, --create {python_version} {name}\tCreate a new environment"
+    echo -e "-i, --interpreter\t\t\tShow all availables interpreters"
+    echo -e "-d, --delete {environment}\t\tDelete the given environment"
+    echo -e "-h, --help\t\t\t\tShow this help and exit"
 
 }
 
