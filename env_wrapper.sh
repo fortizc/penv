@@ -10,7 +10,7 @@ list_environments() {
     fi
 
     local list=""
-    for f in $(ls $folder); do
+    for f in $(ls $folder | cut -d "/" -f1); do
         # local name=$(bas$f)
         local version_cmd="$folder/$f/bin/python --version"
         # Weird thing here. python2 show his version using stderr
@@ -24,7 +24,7 @@ list_environments() {
         return 1
     fi
 
-    echo $list | column -t
+    echo -e $list | column -t
 }
 
 
