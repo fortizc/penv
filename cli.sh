@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source "env_wrapper.sh"
 
 help() {
