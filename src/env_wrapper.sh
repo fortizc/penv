@@ -11,7 +11,6 @@ list_environments() {
 
     local list=""
     for f in $(ls $folder | cut -d "/" -f1); do
-        # local name=$(bas$f)
         local version_cmd="$folder/$f/bin/python --version"
         # Weird thing here. python2 show his version using stderr
         # but pthon3 use the stdout
