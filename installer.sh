@@ -177,7 +177,7 @@ help() {
     echo -e "--uninstall\tUnistall penv"
 }
 
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
     options=$0
 else
     options=$1
