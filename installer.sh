@@ -33,7 +33,7 @@ set_pyenv_path() {
 
 set_python_interpreter_path() {
     local default="/usr/local/bin"
-    echo "Choose a path for your Python interpreters($default):"
+    echo "Choose a path for your Python interpreters ($default):"
     read int_path
 
     if [ -z "$int_path" ]; then
