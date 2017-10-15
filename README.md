@@ -7,10 +7,12 @@ To install penv just run the following command
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/fortizc/penv/master/installer.sh)" --install
 ```
-If you want to remove penv just use this command
+If you want to remove penv use this command
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/fortizc/penv/master/installer.sh)" --uninstall
 ```
+
+## Options
 ```
 Usage ./cli.sh {options}:
 
