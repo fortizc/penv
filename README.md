@@ -12,9 +12,9 @@ If you want to remove penv use this command
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/fortizc/penv/master/installer.sh)" --uninstall
 ```
 
-## Options
+## Options
 ```
-Usage ./cli.sh {options}:
+Usage penv {options}:
 
 Arguments:
 -l, --list				List all availables environments
