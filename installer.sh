@@ -164,6 +164,25 @@ install_penv() {
 }
 
 uninstall_penv() {
+    echo "This command remove penv completely, Are you sure? (y/N):"
+    opt=0
+
+    until [ $opt -eq 1 ]; do
+        read remove
+
+        case "$remove" in
+            "" | N | n)
+                exit 0
+                ;;
+            y | Y)
+                opt=1
+                ;;
+            *)
+                echo "Invalid option (y/N):"
+                ;;
+        esac
+    done
+
     get_install_vars
     delete_scripts
     remove_from_bash_profile
