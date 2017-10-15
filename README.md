@@ -1,7 +1,16 @@
 # penv
-A very simple bash script to manage Python environments
+A bash script to manage Python environments
 
 This script provides a simple way to manage Python 2 or 3 environments
+## Installation
+To install penv just run the following command
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/fortizc/penv/master/installer.sh)" --install
+```
+If you want to remove penv just use this command
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/fortizc/penv/master/installer.sh)" --uninstall
+```
 ```
 Usage ./cli.sh {options}:
 
