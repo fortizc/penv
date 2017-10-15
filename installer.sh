@@ -177,7 +177,13 @@ help() {
     echo -e "--uninstall\tUnistall penv"
 }
 
-case "$1" in
+if [ -z $1 ]; then
+    options=$0
+else
+    options=$1
+fi
+
+case "$options" in
     --install)
         install_penv
         ;;
