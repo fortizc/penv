@@ -160,6 +160,7 @@ install_penv() {
     install_scripts
     clean_up
     echo "Install complete!!!"
+    echo "Please reload your shell or open a new one to use penv"
 }
 
 uninstall_penv() {
