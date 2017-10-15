@@ -49,9 +49,9 @@ set_env_var() {
 
 download_penv() {
     echo "Download penv scripts"
-    wget $URL/penv
-    wget $URL/config.sh
-    wget $URL/env_wrapper.sh
+    curl -O $URL/penv
+    curl -O $URL/config.sh
+    curl -O $URL/env_wrapper.sh
 }
 
 create_temp_dir() {
