@@ -126,14 +126,6 @@ delete_scripts() {
         echo "ERROR!!! folder $CUR_INSTALL_DIR not found!!!"
         exit 1
     fi
-
-    echo "Deleting from bin directory"
-    if [ -L "$CUR_BIN_DIR/penv" ]; then
-        rm -f $CUR_BIN_DIR/penv
-    else
-        echo "ERROR!!! file $CUR_BIN_DIR/penv not found!!!"
-        exit 1
-    fi
 }
 
 remove_from_bash_profile() {
