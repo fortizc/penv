@@ -61,8 +61,10 @@ case "$1" in
         ;;
     --help | -h)
         help $0
+        cd - > /dev/null
         ;;
     *)
         help $0
+        cd - > /dev/null
         ;;
 esac
