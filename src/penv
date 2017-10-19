@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source "env_wrapper.sh"
-
 help() {
     echo -e "Usage $1 {options}:"
     echo -e ""
@@ -18,22 +16,42 @@ help() {
 
 case "$1" in
     --list | -l)
-        list_environments
+
+        (
+            source "env_wrapper.sh"
+            list_environments
+        )
         ;;
     --packages | -p)
-        list_packages $2
+        (
+            source "env_wrapper.sh"
+            list_packages $2
+        )
         ;;
     --activate | -a)
-        activate_environment $2
+
+        env_cmd=$(source "env_wrapper.sh"; get_environment_activation $2)
+        if [ "$?" -eq "0" ]; then
+            source $env_cmd
+        fi
         ;;
     --create | -c)
-        create_environment $2 $3
+        (
+            source "env_wrapper.sh"
+            create_environment $2 $3
+        )
         ;;
     --interpreter | -i)
-        list_interpreters
+        (
+            source "env_wrapper.sh"
+            list_interpreters
+        )
         ;;
     --delete | -d)
-        delete_environment $2
+        (
+            source "env_wrapper.sh"
+            delete_environment $2
+        )
         ;;
     --help | -h)
         help $0

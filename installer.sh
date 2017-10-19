@@ -87,7 +87,7 @@ update_bash_profile() {
     done
 
     echo "Adding alias to your bash_profile"
-    echo "alias penv='PATH=$INSTALL_DIR:$PATH . penv'" >> $BASH_PROFILE
+    echo "alias penv='cd $INSTALL_DIR && . ./penv'" >> $BASH_PROFILE
 }
 
 install_scripts() {
@@ -97,7 +97,6 @@ install_scripts() {
     sudo cp env_wrapper.sh $INSTALL_DIR/
 
     sudo chmod +x $INSTALL_DIR/penv
-    ln -s $INSTALL_DIR/penv $BIN_DIR/penv
 }
 
 clean_up() {
