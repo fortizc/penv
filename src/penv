@@ -21,12 +21,14 @@ case "$1" in
             source "env_wrapper.sh"
             list_environments
         )
+        cd - > /dev/null
         ;;
     --packages | -p)
         (
             source "env_wrapper.sh"
             list_packages $2
         )
+        cd - > /dev/null
         ;;
     --activate | -a)
 
@@ -34,24 +36,28 @@ case "$1" in
         if [ "$?" -eq "0" ]; then
             source $env_cmd
         fi
+        cd - > /dev/null
         ;;
     --create | -c)
         (
             source "env_wrapper.sh"
             create_environment $2 $3
         )
+        cd - > /dev/null
         ;;
     --interpreter | -i)
         (
             source "env_wrapper.sh"
             list_interpreters
         )
+        cd - > /dev/null
         ;;
     --delete | -d)
         (
             source "env_wrapper.sh"
             delete_environment $2
         )
+        cd - > /dev/null
         ;;
     --help | -h)
         help $0
