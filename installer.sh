@@ -5,7 +5,7 @@ INSTALL_DIR=/usr/local/penv
 BIN_DIR=/usr/local/bin
 BASH_PROFILE=$HOME/.bash_profile
 DEFAULT_CONFIG=$HOME/.config/penv
-URL="https://raw.githubusercontent.com/fortizc/penv/master/src"
+URL="https://raw.githubusercontent.com/fortizc/penv/master"
 
 create_config() {
     echo "Config file path ($DEFAULT_CONFIG):"
@@ -49,9 +49,10 @@ set_env_var() {
 
 download_penv() {
     echo "Download penv scripts"
-    curl -O $URL/penv
-    curl -O $URL/config.sh
-    curl -O $URL/env_wrapper.sh
+    curl -O $URL/src/penv
+    curl -O $URL/src/config.sh
+    curl -O $URL/src/env_wrapper.sh
+    curl -O $URL/version
 }
 
 create_temp_dir() {
@@ -95,6 +96,7 @@ install_scripts() {
     sudo cp penv $INSTALL_DIR/
     sudo cp config.sh $INSTALL_DIR/
     sudo cp env_wrapper.sh $INSTALL_DIR/
+    sudo cp version $INSTALL_DIR/
 
     sudo chmod +x $INSTALL_DIR/penv
 }
