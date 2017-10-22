@@ -10,6 +10,7 @@ help() {
     echo -e "-c, --create {python_version} {name}\tCreate a new environment"
     echo -e "-i, --interpreter\t\t\tShow all availables interpreters"
     echo -e "-d, --delete {environment}\t\tDelete the given environment"
+    echo -e "-v, --version\t\t\t\tShow the version number and exit"
     echo -e "-h, --help\t\t\t\tShow this help and exit"
 
 }
@@ -56,6 +57,13 @@ case "$1" in
         (
             source "env_wrapper.sh"
             delete_environment $2
+        )
+        cd - > /dev/null
+        ;;
+
+    --version | -v)
+        (
+            head -n1 "version"
         )
         cd - > /dev/null
         ;;
