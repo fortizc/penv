@@ -88,7 +88,7 @@ update_bash_profile() {
     done
 
     echo "Adding alias to your bash_profile"
-    echo "alias penv='cd $INSTALL_DIR && . ./penv'" >> $BASH_PROFILE
+    echo "alias penv='. $INSTALL_DIR/penv'" >> $BASH_PROFILE
 }
 
 install_scripts() {
