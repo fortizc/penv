@@ -15,64 +15,65 @@ help() {
 
 }
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 case "$1" in
     --list | -l)
 
         (
+            cd $DIR
             source "env_wrapper.sh"
             list_environments
         )
-        cd - > /dev/null
         ;;
     --packages | -p)
         (
+            cd $DIR
             source "env_wrapper.sh"
             list_packages $2
         )
-        cd - > /dev/null
         ;;
     --activate | -a)
 
-        env_cmd=$(source "env_wrapper.sh"; get_environment_activation $2)
+        env_cmd=$(cd $DIR
+                  source "env_wrapper.sh"
+                  get_environment_activation $2)
         if [ "$?" -eq "0" ]; then
             source $env_cmd
         fi
-        cd - > /dev/null
         ;;
     --create | -c)
         (
+            cd $DIR
             source "env_wrapper.sh"
             create_environment $2 $3
         )
-        cd - > /dev/null
         ;;
     --interpreter | -i)
         (
+            cd $DIR
             source "env_wrapper.sh"
             list_interpreters
         )
-        cd - > /dev/null
         ;;
     --delete | -d)
         (
+            cd $DIR
             source "env_wrapper.sh"
             delete_environment $2
         )
-        cd - > /dev/null
         ;;
 
     --version | -v)
         (
+            cd $DIR
             head -n1 "version"
         )
-        cd - > /dev/null
         ;;
     --help | -h)
         help $0
-        cd - > /dev/null
         ;;
     *)
         help $0
-        cd - > /dev/null
         ;;
 esac
