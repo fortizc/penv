@@ -3,8 +3,11 @@
 penv_completion() {
     prev_arg="${COMP_WORDS[COMP_CWORD-1]}";
     curr_arg="${COMP_WORDS[COMP_CWORD]}";
+
+    # echo "${COMP_WORDS[2]}"
+
     if [[ "$prev_arg" == "-a" || "$prev_arg" == "--activate" || "$prev_arg" == "-d" || "$prev_arg" == "--delete" ]]; then
-        local sug=($(compgen -W "$(penv -l| cut -d " " -f 1)" "${COMP_WORDS[2]}"))
+        local sug=($(compgen -W "$(penv -l| cut -d " " -f 1)" "$curr_arg"))
 
         if [ "${#sug[@]}" == "1" ]; then
             local envi=$(echo ${sug[0]/%\ */})
@@ -12,8 +15,8 @@ penv_completion() {
         else
             COMPREPLY=("${sug[@]}")
         fi
-    elif [[ ("$prev_arg" == "-c" || "$prev_arg" == "--create") ]]; then
-        local sug=($(compgen -W "$(penv -i| cut -d " " -f 1)" "${COMP_WORDS[2]}"))
+    elif [[ "$prev_arg" == "-c" || "$prev_arg" == "--create" ]]; then
+        local sug=($(compgen -W "$(penv -i| cut -d " " -f 1)" "$curr_arg"))
 
         if [ "${#sug[@]}" == "1" ]; then
             local py=$(echo ${sug[0]/%\ */})
@@ -21,6 +24,9 @@ penv_completion() {
         else
             COMPREPLY=("${sug[@]}")
         fi
+
+    elif [[ "$prev_arg" == "penv" ]]; then
+        COMPREPLY=($(compgen -W "--list --packages --activate --create --interpreter --delete --version --help" "${curr_arg//-/\\\-}"))
     fi
 }
 
