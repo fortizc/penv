@@ -7,7 +7,7 @@ BASH_PROFILE=$HOME/.bash_profile
 DEFAULT_CONFIG=$HOME/.config/penv
 LINUX_COMPLETION=/etc/bash_completion.d
 MACOS_COMPLETION=/usr/local/etc/bash_completion.d
-URL="https://raw.githubusercontent.com/fortizc/penv/master"
+URL="https://gitlab.com/fortizc/penv/raw/master"
 
 create_config() {
     echo "Config file path ($DEFAULT_CONFIG):"
