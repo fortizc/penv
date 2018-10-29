@@ -5,6 +5,8 @@ INSTALL_DIR=/usr/local/penv
 BIN_DIR=/usr/local/bin
 BASH_PROFILE=$HOME/.bash_profile
 DEFAULT_CONFIG=$HOME/.config/penv
+LINUX_COMPLETION=/etc/bash_completion.d
+MACOS_COMPLETION=/usr/local/etc/bash_completion.d
 URL="https://raw.githubusercontent.com/fortizc/penv/master"
 
 create_config() {
@@ -53,6 +55,7 @@ download_penv() {
     curl -O $URL/src/config.sh
     curl -O $URL/src/env_wrapper.sh
     curl -O $URL/version
+    curl -O $URL/completion/penv-completion.bash
 }
 
 create_temp_dir() {
@@ -97,8 +100,17 @@ install_scripts() {
     sudo cp config.sh $INSTALL_DIR/
     sudo cp env_wrapper.sh $INSTALL_DIR/
     sudo cp version $INSTALL_DIR/
+    sudo cp penv-completion.bash $INSTALL_DIR/
 
     sudo chmod +x $INSTALL_DIR/penv
+
+    if [ -d "$LINUX_COMPLETION" ]; then
+        ln -s $INSTALL_DIR/penv-completion.bash $LINUX_COMPLETION/penv
+    elif [ -d "$MACOS_COMPLETION" ]; then
+        ln -s $INSTALL_DIR/penv-completion.bash $MACOS_COMPLETION/penv
+    else
+        echo "Could not set bash completion"
+    fi
 }
 
 clean_up() {
