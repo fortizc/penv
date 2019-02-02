@@ -1,12 +1,22 @@
 #!/bin/bash
 
-TEMP_DIR=/tmp/penv-install
-INSTALL_DIR=/usr/local/penv
-BIN_DIR=/usr/local/bin
-BASH_PROFILE=$HOME/.bash_profile
+OS_TYPE=$(uname -s)
+
+if [ $OS_TYPE == "Linux" ]; then
+    BIN_DIR=/usr/bin
+    COMPLETION=/etc/bash_completion.d
+elif [ $OS_TYPE == "Darwin" ]; then
+    BIN_DIR=/usr/local/bin
+    COMPLETION=/usr/local/etc/bash_completion.d
+else
+    echo "This SO is not supported"
+    exit 1
+fi
+
+BASH_PROFILE=$HOME/.bashrc
 DEFAULT_CONFIG=$HOME/.config/penv
-LINUX_COMPLETION=/etc/bash_completion.d
-MACOS_COMPLETION=/usr/local/etc/bash_completion.d
+INSTALL_DIR=/usr/local/penv
+TEMP_DIR=/tmp/penv-install
 URL="https://gitlab.com/fortizc/penv/raw/master"
 
 create_config() {
@@ -34,7 +44,7 @@ set_pyenv_path() {
 }
 
 set_python_interpreter_path() {
-    local default="/usr/local/bin"
+    local default=$BIN_DIR
     echo "Choose a path for your Python interpreters ($default):"
     read int_path
 
@@ -104,10 +114,10 @@ install_scripts() {
 
     sudo chmod +x $INSTALL_DIR/penv
 
-    if [ -d "$LINUX_COMPLETION" ]; then
-        ln -s $INSTALL_DIR/penv-completion.bash $LINUX_COMPLETION/penv
-    elif [ -d "$MACOS_COMPLETION" ]; then
-        ln -s $INSTALL_DIR/penv-completion.bash $MACOS_COMPLETION/penv
+    if [ $OS_TYPE == "Linux" ]; then
+        sudo ln -s $INSTALL_DIR/penv-completion.bash $COMPLETION/penv
+    elif [ $OS_TYPE == "Darwin" ]; then
+        ln -s $INSTALL_DIR/penv-completion.bash $COMPLETION/penv
     else
         echo "Could not set bash completion"
     fi
@@ -140,6 +150,9 @@ delete_scripts() {
         echo "ERROR!!! folder $CUR_INSTALL_DIR not found!!!"
         exit 1
     fi
+
+    sudo rm -rf $COMPLETION/penv
+    rm -rf $(dirname $PENV_CONFIG_FILE)
 }
 
 remove_from_bash_profile() {
@@ -152,7 +165,10 @@ remove_from_bash_profile() {
 }
 
 install_penv() {
-    echo "Installing"
+    echo
+    echo "Installing on $OS_TYPE"
+    echo "-------------------"
+    echo
     create_temp_dir
     cd $TEMP_DIR
     download_penv
