@@ -16,11 +16,11 @@ bash -c "$(curl -fsSL https://gitlab.com/fortizc/penv/raw/master/installer.sh)" 
 Usage penv {options}:
 
 Arguments:
--l, --list			                  List all availables environments
--p, --packages {environment}		  Show instaled packages
--a, --activate {environment}		  Activate the given environment
+-l, --list                            List all availables environments
+-p, --packages {environment}          Show instaled packages
+-a, --activate {environment}          Activate the given environment
 -c, --create {python_version} {name}  Create a new environment
--i, --interpreter			          Show all availables interpreters
--d, --delete {environment}		      Delete the given environment
--h, --help				              Show this help and exit
+-i, --interpreter                     Show all availables interpreters
+-d, --delete {environment}            Delete the given environment
+-h, --help                            Show this help and exit
 ```
