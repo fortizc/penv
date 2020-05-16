@@ -114,7 +114,7 @@ delete_environment() {
 }
 
 
-clean_environment() {
+reset_environment() {
     local folder=$(get_folder)
     local interpreter=$(eval ls -l $folder/$1/bin/python |\
                         sed -e "s/.* -> //")

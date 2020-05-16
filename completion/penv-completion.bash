@@ -8,7 +8,7 @@ penv_completion() {
 
     if [[ "$prev_arg" == "-a" || "$prev_arg" == "--activate" ||\
           "$prev_arg" == "-d" || "$prev_arg" == "--delete" ||\
-          "$prev_arg" == "-C" || "$prev_arg" == "--clean" ]]; then
+          "$prev_arg" == "-r" || "$prev_arg" == "--reset" ]]; then
         local sug=($(compgen -W "$(penv -l| cut -d " " -f 1)" "$curr_arg"))
 
         if [ "${#sug[@]}" == "1" ]; then
@@ -28,7 +28,7 @@ penv_completion() {
         fi
 
     elif [[ "$prev_arg" == "penv" ]]; then
-        COMPREPLY=($(compgen -W "--list --packages --activate --create --interpreter --delete --clean --version --help" "${curr_arg//-/\\\-}"))
+        COMPREPLY=($(compgen -W "--list --packages --activate --create --interpreter --delete --reset --version --help" "${curr_arg//-/\\\-}"))
     fi
 }
 
