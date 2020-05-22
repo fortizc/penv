@@ -112,3 +112,12 @@ delete_environment() {
     fi
     rm -rf $delete
 }
+
+
+reset_environment() {
+    local folder=$(get_folder)
+    local interpreter=$(eval ls -l $folder/$1/bin/python |\
+                        sed -e "s/.* -> //")
+    delete_environment $1
+    create_environment $interpreter $1
+}

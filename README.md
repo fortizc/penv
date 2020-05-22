@@ -22,5 +22,6 @@ Arguments:
 -c, --create {python_version} {name}  Create a new environment
 -i, --interpreter                     Show all availables interpreters
 -d, --delete {environment}            Delete the given environment
+-r, --reset {environment}             Reset the given environment
 -h, --help                            Show this help and exit
 ```
